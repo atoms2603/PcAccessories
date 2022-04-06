@@ -8,5 +8,6 @@ namespace PcAccessories.Entities
 {
     public class User
     {
+        public Guid UserId { get; set; }
     }
 }
