@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PcAccessories.Entities
 {
-    public class User
+    public abstract class BaseEntity
     {
-        public Guid UserId { get; set; }
+        public int Id { get; set; }
+        public DateTime CreatetionTime { get; set; }
     }
 }
