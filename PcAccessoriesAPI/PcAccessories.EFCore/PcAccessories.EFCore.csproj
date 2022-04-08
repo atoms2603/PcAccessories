@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PcAccessories.Entities\PcAccessories.Entities.csproj" />
+    <ProjectReference Include="..\PcAccessories.Ultilities\PcAccessories.Ultilities.csproj" />
   </ItemGroup>
 
 </Project>
