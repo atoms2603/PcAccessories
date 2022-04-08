@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PcAccessories.Entities.Entities
 {
-    public class Slider : BaseEntity
+    public class Slide : BaseEntity
     {
-        public Guid SliderId { get; set; }
+        public Guid SlideId { get; set; }
         public string Image { get; set; }
+        public byte Status { get; set; }
     }
 }
