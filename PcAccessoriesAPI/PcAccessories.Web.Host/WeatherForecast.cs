@@ -1,6 +1,6 @@
 using System;
 
-namespace PcAccessories.Web.Host
+namespace PcAccessories.WebAPI
 {
     public class WeatherForecast
     {
