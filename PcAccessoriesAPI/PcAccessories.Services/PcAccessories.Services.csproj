@@ -4,4 +4,13 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Web\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PcAccessories.EFCore\PcAccessories.EFCore.csproj" />
+    <ProjectReference Include="..\PcAccessories.Entities\PcAccessories.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
