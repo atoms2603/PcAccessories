@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PcAccessories.EFCore.Data
 {
-    public class PcAccessoriesDbContext : IdentityDbContext<User,Role,Guid>
+    public class PcAccessoriesDbContext : IdentityDbContext<User, Role, Guid>
     {
         public PcAccessoriesDbContext(DbContextOptions<PcAccessoriesDbContext> options) : base(options)
         {
@@ -35,6 +35,31 @@ namespace PcAccessories.EFCore.Data
 
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaims");
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("UserTokens").HasKey(x => x.UserId);
+
+            modelBuilder.Entity<Slide>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Category>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Brand>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Product>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<ProductImage>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<ProductLove>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Invoice>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<InvoiceDetail>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Slide>(entity =>
             {
@@ -192,11 +217,11 @@ namespace PcAccessories.EFCore.Data
             });
 
             modelBuilder.Entity<Slide>().HasData(
-              new Slide() { SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D1"), Image = "1.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
-              new Slide() { SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D2"), Image = "2.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
-              new Slide() { SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D3"), Image = "3.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
-              new Slide() { SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D4"), Image = "4.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
-              new Slide() { SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D5"), Image = "5.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active }
+              new Slide() { Id = 1, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D1"), Image = "1.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
+              new Slide() { Id = 2, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D2"), Image = "2.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
+              new Slide() { Id = 3, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D3"), Image = "3.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
+              new Slide() { Id = 4, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D4"), Image = "4.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
+              new Slide() { Id = 5, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D5"), Image = "5.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active }
               );
         }
     }
