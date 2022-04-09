@@ -10,5 +10,8 @@ namespace PcAccessories.Entities
     {
         public int Id { get; set; }
         public DateTime CreatetionTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+        public Guid CreatetionBy { get; set; }
+        public Guid UpdateBy { get; set; }
     }
 }
