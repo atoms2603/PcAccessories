@@ -20,7 +20,10 @@ namespace PcAccessories.EFCore.Migrations
                     CategoryId = table.Column<Guid>(type: "char(36)", unicode: false, fixedLength: true, maxLength: 36, nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -76,7 +79,10 @@ namespace PcAccessories.EFCore.Migrations
                     Image = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Status = table.Column<byte>(type: "tinyint unsigned", nullable: false),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -142,8 +148,9 @@ namespace PcAccessories.EFCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Address = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Status = table.Column<byte>(type: "tinyint unsigned", nullable: false),
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LastLogInTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NormalizedUserName = table.Column<string>(type: "longtext", nullable: true)
@@ -202,7 +209,10 @@ namespace PcAccessories.EFCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CategoryId = table.Column<Guid>(type: "char(36)", unicode: false, fixedLength: true, maxLength: 36, nullable: false, collation: "ascii_general_ci"),
                     CategoryId1 = table.Column<int>(type: "int", nullable: true),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -231,7 +241,10 @@ namespace PcAccessories.EFCore.Migrations
                     DeliveryPhone = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Status = table.Column<byte>(type: "tinyint unsigned", nullable: false),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -259,7 +272,10 @@ namespace PcAccessories.EFCore.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<byte>(type: "tinyint unsigned", nullable: false),
                     BrandId1 = table.Column<int>(type: "int", nullable: true),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -286,7 +302,10 @@ namespace PcAccessories.EFCore.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     InvoiceId1 = table.Column<int>(type: "int", nullable: true),
                     ProductId1 = table.Column<int>(type: "int", nullable: true),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -317,7 +336,10 @@ namespace PcAccessories.EFCore.Migrations
                     ImagePath = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProductId1 = table.Column<int>(type: "int", nullable: true),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -341,7 +363,10 @@ namespace PcAccessories.EFCore.Migrations
                     ProductId = table.Column<Guid>(type: "char(36)", unicode: false, fixedLength: true, maxLength: 36, nullable: false, collation: "ascii_general_ci"),
                     UserId = table.Column<Guid>(type: "char(36)", unicode: false, fixedLength: true, maxLength: 36, nullable: false, collation: "ascii_general_ci"),
                     ProductId1 = table.Column<int>(type: "int", nullable: true),
-                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatetionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatetionBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UpdateBy = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -364,18 +389,18 @@ namespace PcAccessories.EFCore.Migrations
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "e8520127-9a38-4d5a-9dce-ccb19d3018a1", "Administrator role", "admin", "admin" });
+                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "2a3c578e-572b-42f3-97d1-383be28a5fe2", "Administrator role", "admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "Sliders",
-                columns: new[] { "Id", "CreatetionTime", "Image", "SlideId", "Status" },
+                columns: new[] { "Id", "CreatetionBy", "CreatetionTime", "Image", "SlideId", "Status", "UpdateBy", "UpdateTime" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d1"), (byte)0 },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d2"), (byte)0 },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d3"), (byte)0 },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "4.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d4"), (byte)0 },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d5"), (byte)0 }
+                    { 1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d1"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d2"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d3"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "4.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d4"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d5"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -385,8 +410,8 @@ namespace PcAccessories.EFCore.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "HCM", "39c2eeb6-9d50-4764-9e52-c854269f2e32", "huyt4242@gmail.com", true, false, null, "Atoms", "huyt4242@gmail.com", "admin", "AQAAAAEAACcQAAAAEO4arf+IxO7btXIwc5k6S5MOIw+JEq/77hjs0jinecR8NpydBpDPUZgxYBjkvy71xg==", "0342553542", false, "", null, false, "admin" });
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreatetionTime", "Email", "EmailConfirmed", "LastLogInTime", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
+                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "HCM", "16a3d37f-d04f-4d15-96d4-0dafd1996a1a", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "huyt4242@gmail.com", true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "Atoms", "huyt4242@gmail.com", "admin", "AQAAAAEAACcQAAAAEA1y8I4MJBNYSyYmF86kU+RZ+WQLsNsikh1wInY/63y9TMnBrQIv3jbbW6c+fkJInQ==", "0342553542", false, "", (byte)0, false, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Brands_BrandId",

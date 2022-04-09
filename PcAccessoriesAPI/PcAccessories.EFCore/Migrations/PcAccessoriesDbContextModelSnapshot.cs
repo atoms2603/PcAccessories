@@ -138,11 +138,20 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int?>("CategoryId1")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
+
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -166,11 +175,20 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
 
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
+
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -185,6 +203,9 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
@@ -207,6 +228,12 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint unsigned");
 
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<Guid>("UserId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
@@ -228,6 +255,9 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
@@ -262,6 +292,12 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceDetailId")
@@ -289,6 +325,9 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int?>("BrandId1")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
 
@@ -310,6 +349,12 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint unsigned");
 
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId1");
@@ -325,6 +370,9 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
@@ -347,6 +395,12 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
 
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId1");
@@ -362,6 +416,9 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
@@ -380,6 +437,12 @@ namespace PcAccessories.EFCore.Migrations
                         .IsUnicode(false)
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
+
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("UserId")
                         .HasMaxLength(36)
@@ -425,7 +488,7 @@ namespace PcAccessories.EFCore.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "e8520127-9a38-4d5a-9dce-ccb19d3018a1",
+                            ConcurrencyStamp = "2a3c578e-572b-42f3-97d1-383be28a5fe2",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -437,6 +500,9 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<Guid>("CreatetionBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatetionTime")
                         .HasColumnType("datetime(6)");
@@ -453,6 +519,12 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint unsigned");
 
+                    b.Property<Guid>("UpdateBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SlideId")
@@ -464,42 +536,57 @@ namespace PcAccessories.EFCore.Migrations
                         new
                         {
                             Id = 1,
+                            CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "1.png",
                             SlideId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00d1"),
-                            Status = (byte)0
+                            Status = (byte)1,
+                            UpdateBy = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UpdateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
+                            CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "2.png",
                             SlideId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00d2"),
-                            Status = (byte)0
+                            Status = (byte)1,
+                            UpdateBy = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UpdateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
+                            CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "3.png",
                             SlideId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00d3"),
-                            Status = (byte)0
+                            Status = (byte)1,
+                            UpdateBy = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UpdateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
+                            CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "4.png",
                             SlideId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00d4"),
-                            Status = (byte)0
+                            Status = (byte)1,
+                            UpdateBy = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UpdateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
+                            CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "5.png",
                             SlideId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00d5"),
-                            Status = (byte)0
+                            Status = (byte)1,
+                            UpdateBy = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UpdateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -518,11 +605,17 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreatetionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("LastLogInTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -551,8 +644,8 @@ namespace PcAccessories.EFCore.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("longtext");
+                    b.Property<byte>("Status")
+                        .HasColumnType("tinyint unsigned");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
@@ -570,17 +663,20 @@ namespace PcAccessories.EFCore.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "HCM",
-                            ConcurrencyStamp = "39c2eeb6-9d50-4764-9e52-c854269f2e32",
+                            ConcurrencyStamp = "16a3d37f-d04f-4d15-96d4-0dafd1996a1a",
+                            CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "huyt4242@gmail.com",
                             EmailConfirmed = true,
+                            LastLogInTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
                             Name = "Atoms",
                             NormalizedEmail = "huyt4242@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO4arf+IxO7btXIwc5k6S5MOIw+JEq/77hjs0jinecR8NpydBpDPUZgxYBjkvy71xg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA1y8I4MJBNYSyYmF86kU+RZ+WQLsNsikh1wInY/63y9TMnBrQIv3jbbW6c+fkJInQ==",
                             PhoneNumber = "0342553542",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
+                            Status = (byte)0,
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
