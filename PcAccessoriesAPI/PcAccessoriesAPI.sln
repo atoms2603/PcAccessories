@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.Services", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.Ultilities", "PcAccessories.Ultilities\PcAccessories.Ultilities.csproj", "{18C1A436-39B8-4DF8-A78F-08B185C51AD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcAccessories.Dtos", "PcAccessories.Dtos\PcAccessories.Dtos.csproj", "{798B22E3-DF0A-414F-A982-DC6BA499E0DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{18C1A436-39B8-4DF8-A78F-08B185C51AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C1A436-39B8-4DF8-A78F-08B185C51AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C1A436-39B8-4DF8-A78F-08B185C51AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{798B22E3-DF0A-414F-A982-DC6BA499E0DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{798B22E3-DF0A-414F-A982-DC6BA499E0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{798B22E3-DF0A-414F-A982-DC6BA499E0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{798B22E3-DF0A-414F-A982-DC6BA499E0DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using PcAccessories.EFCore.Data;
+using PcAccessories.Entities.Entities;
 using PcAccessories.Services.CMS.UserService;
 using System;
 using System.Collections.Generic;
@@ -35,6 +37,15 @@ namespace PcAccessories.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PcAccessories.Web.Host", Version = "v1" });
             });
+
+            var connectionString = Configuration.GetConnectionString("PcAccessoriesConnection");
+            var severVersion = ServerVersion.AutoDetect(connectionString);
+
+            services.AddDbContext<PcAccessoriesDbContext>(options => options.UseMySql(connectionString, severVersion));
+
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<PcAccessoriesDbContext>()
+                .AddDefaultTokenProviders();
 
             #region DI
             ServiceRegistration(services);
@@ -65,11 +76,11 @@ namespace PcAccessories.WebAPI
 
         private void ServiceRegistration(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("PcAccessoriesConnection");
-            var severVersion = ServerVersion.AutoDetect(connectionString);
-
-            services.AddDbContext<PcAccessoriesDbContext>(options => options.UseMySql(connectionString, severVersion));
+            
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<UserManager<User>, UserManager<User>>();
+            services.AddTransient<SignInManager<User>, SignInManager<User>>();
+            services.AddTransient<RoleManager<Role>, RoleManager<Role>>();
         }
     }
 }
