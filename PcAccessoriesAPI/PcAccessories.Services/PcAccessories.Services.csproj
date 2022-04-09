@@ -9,6 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PcAccessories.Dtos\PcAccessories.Dtos.csproj" />
     <ProjectReference Include="..\PcAccessories.EFCore\PcAccessories.EFCore.csproj" />
     <ProjectReference Include="..\PcAccessories.Entities\PcAccessories.Entities.csproj" />
   </ItemGroup>
