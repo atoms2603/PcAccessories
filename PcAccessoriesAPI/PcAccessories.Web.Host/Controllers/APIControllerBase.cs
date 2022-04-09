@@ -20,7 +20,7 @@ namespace PcAccessories.WebAPI.Controllers
             {
                 if (_userName == null)
                 {
-                    _userName = GetClaimValue("Labbit:UserName");
+                    _userName = GetClaimValue("UserName");
                 }
                 return _userName;
             }
@@ -31,7 +31,7 @@ namespace PcAccessories.WebAPI.Controllers
             {
                 if (_email == null)
                 {
-                    _email = GetClaimValue("Labbit:Email");
+                    _email = GetClaimValue("Email");
                 }
                 return _email;
             }
@@ -40,8 +40,7 @@ namespace PcAccessories.WebAPI.Controllers
         {
             get
             {
-                if (_userId == null
-                    && Guid.TryParse(GetClaimValue("Labbit:UserId"), out Guid userId))
+                if (_userId == null && Guid.TryParse(GetClaimValue("UserId"), out Guid userId))
                 {
                     _userId = userId;
                 }
