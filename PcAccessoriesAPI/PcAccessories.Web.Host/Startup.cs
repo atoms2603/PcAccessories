@@ -2,11 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PcAccessories.EFCore.Data;
+using PcAccessories.Services.CMS.UserService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +35,10 @@ namespace PcAccessories.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PcAccessories.Web.Host", Version = "v1" });
             });
+
+            #region DI
+            ServiceRegistration(services);
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +61,15 @@ namespace PcAccessories.WebAPI
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void ServiceRegistration(IServiceCollection services)
+        {
+            var connectionString = Configuration.GetConnectionString("PcAccessoriesConnection");
+            var severVersion = ServerVersion.AutoDetect(connectionString);
+
+            services.AddDbContext<PcAccessoriesDbContext>(options => options.UseMySql(connectionString, severVersion));
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.Web.Host", "PcAccessories.Web.Host\PcAccessories.Web.Host.csproj", "{B5CA5373-E1DE-43B6-8462-24A06F16B792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.WebAPI", "PcAccessories.Web.Host\PcAccessories.WebAPI.csproj", "{B5CA5373-E1DE-43B6-8462-24A06F16B792}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.Entities", "PcAccessories.Entities\PcAccessories.Entities.csproj", "{0A742CBC-E3D2-4273-8AFD-2A159F24F1D1}"
 EndProject
@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.EFCore", "PcA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.Services", "PcAccessories.Services\PcAccessories.Services.csproj", "{E25D6793-6312-497F-A8F8-57AC7F0DEC16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcAccessories.Ultilities", "PcAccessories.Ultilities\PcAccessories.Ultilities.csproj", "{18C1A436-39B8-4DF8-A78F-08B185C51AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PcAccessories.Ultilities", "PcAccessories.Ultilities\PcAccessories.Ultilities.csproj", "{18C1A436-39B8-4DF8-A78F-08B185C51AD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
