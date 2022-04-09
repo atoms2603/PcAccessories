@@ -31,5 +31,10 @@ namespace PcAccessories.Services.CMS.UserService
         {
             return await _context.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
         }
+
+        public async Task<User> FindByPhoneNumber(string phoneNumber)
+        {
+            return await _context.Users.Where(x => x.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+        }
     }
 }

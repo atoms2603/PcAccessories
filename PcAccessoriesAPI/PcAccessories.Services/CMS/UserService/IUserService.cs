@@ -10,5 +10,6 @@ namespace PcAccessories.Services.CMS.UserService
         Task<User> GetByIdAsync(Guid id);
         Task<User> GetByUsernameAsync(string username);
         Task<User> GetByEmailAsync(string email);
+        Task<User> FindByPhoneNumber(string phoneNumber);
     }
 }
