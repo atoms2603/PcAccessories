@@ -6,8 +6,14 @@ namespace PcAccessories.Ultilities
     {
         public enum SlideStatus : byte
         {
-            Active,
-            InActive
+            InActive,
+            Active
         } 
+
+        public enum UserStatus : byte
+        {
+            InActive,
+            Active
+        }
     }
 }
