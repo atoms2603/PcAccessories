@@ -33,18 +33,17 @@ namespace PcAccessories.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(
-                options => options.AddPolicy(
-                    _allowOrigin,
-                    builder => builder
-                        .WithOrigins(
-                            "https://pcaccessorieswebapi.azurewebsites.net"
-                        )
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials()
-                )
-            );
+            services.AddCors(options =>
+            {
+                options.AddPolicy(_allowOrigin,
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -94,7 +93,7 @@ namespace PcAccessories.WebAPI
 
         private void ServiceRegistration(IServiceCollection services)
         {
-            
+
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
@@ -103,7 +102,8 @@ namespace PcAccessories.WebAPI
 
         private void IdentityConfig(IServiceCollection services)
         {
-            services.Configure<IdentityOptions>(options => {
+            services.Configure<IdentityOptions>(options =>
+            {
                 // Thiết lập về Password
                 options.Password.RequireDigit = false; // Không bắt phải có số
                 options.Password.RequireLowercase = false; // Không bắt phải có chữ thường
