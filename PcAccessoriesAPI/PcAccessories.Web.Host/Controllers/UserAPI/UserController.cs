@@ -56,12 +56,12 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
         public async Task<IActionResult> Login([FromForm]LoginRequestDto request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
-            if (user == null) return BadRequest("Tài khoản không tồn tại");
+            if (user == null) return BadRequest("Account does not exists.");
 
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return BadRequest("Đăng nhập không đúng");
+                return BadRequest("Login failed.");
             }
 
             var roles = await _userManager.GetRolesAsync(user);

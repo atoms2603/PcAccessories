@@ -9,8 +9,8 @@ using PcAccessories.EFCore.Data;
 namespace PcAccessories.EFCore.Migrations
 {
     [DbContext(typeof(PcAccessoriesDbContext))]
-    [Migration("20220409100140_Init database")]
-    partial class Initdatabase
+    [Migration("20220410040818_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,9 +137,6 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
 
-                    b.Property<int?>("CategoryId1")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("CreatetionBy")
                         .HasColumnType("char(36)");
 
@@ -159,8 +156,6 @@ namespace PcAccessories.EFCore.Migrations
 
                     b.HasIndex("BrandId")
                         .IsUnique();
-
-                    b.HasIndex("CategoryId1");
 
                     b.ToTable("Brands");
                 });
@@ -247,8 +242,6 @@ namespace PcAccessories.EFCore.Migrations
                     b.HasIndex("InvoiceId")
                         .IsUnique();
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Invoices");
                 });
 
@@ -276,9 +269,6 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
 
-                    b.Property<int?>("InvoiceId1")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("double");
 
@@ -287,9 +277,6 @@ namespace PcAccessories.EFCore.Migrations
                         .IsUnicode(false)
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
-
-                    b.Property<int?>("ProductId1")
-                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -305,10 +292,6 @@ namespace PcAccessories.EFCore.Migrations
                     b.HasIndex("InvoiceDetailId")
                         .IsUnique();
 
-                    b.HasIndex("InvoiceId1");
-
-                    b.HasIndex("ProductId1");
-
                     b.ToTable("InvoiceDetails");
                 });
 
@@ -323,9 +306,6 @@ namespace PcAccessories.EFCore.Migrations
                         .IsUnicode(false)
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
-
-                    b.Property<int?>("BrandId1")
-                        .HasColumnType("int");
 
                     b.Property<Guid>("CreatetionBy")
                         .HasColumnType("char(36)");
@@ -359,8 +339,6 @@ namespace PcAccessories.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId1");
-
                     b.HasIndex("ProductId")
                         .IsUnique();
 
@@ -388,9 +366,6 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
 
-                    b.Property<int?>("ProductId1")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("ProductImageId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
@@ -404,8 +379,6 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId1");
 
                     b.HasIndex("ProductImageId")
                         .IsUnique();
@@ -431,9 +404,6 @@ namespace PcAccessories.EFCore.Migrations
                         .HasColumnType("char(36)")
                         .IsFixedLength(true);
 
-                    b.Property<int?>("ProductId1")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("ProductLoveId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
@@ -454,12 +424,8 @@ namespace PcAccessories.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId1");
-
                     b.HasIndex("ProductLoveId")
                         .IsUnique();
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ProductLoves");
                 });
@@ -490,7 +456,7 @@ namespace PcAccessories.EFCore.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "2a3c578e-572b-42f3-97d1-383be28a5fe2",
+                            ConcurrencyStamp = "cc2d51c1-ceb8-462e-833d-dd58bb9cb710",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -665,7 +631,7 @@ namespace PcAccessories.EFCore.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "HCM",
-                            ConcurrencyStamp = "16a3d37f-d04f-4d15-96d4-0dafd1996a1a",
+                            ConcurrencyStamp = "64fce2df-92ba-45b5-9a29-ac23a31af7ea",
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "huyt4242@gmail.com",
                             EmailConfirmed = true,
@@ -674,7 +640,7 @@ namespace PcAccessories.EFCore.Migrations
                             Name = "Atoms",
                             NormalizedEmail = "huyt4242@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA1y8I4MJBNYSyYmF86kU+RZ+WQLsNsikh1wInY/63y9TMnBrQIv3jbbW6c+fkJInQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKv/FOvWuJ87FO3ONw6JiNXMGRbqApUQgmepSSsbm3SfSUxYPFf92YcuWS8/CofVZA==",
                             PhoneNumber = "0342553542",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -682,107 +648,6 @@ namespace PcAccessories.EFCore.Migrations
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Brand", b =>
-                {
-                    b.HasOne("PcAccessories.Entities.Entities.Category", "Category")
-                        .WithMany("Brands")
-                        .HasForeignKey("CategoryId1");
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Invoice", b =>
-                {
-                    b.HasOne("PcAccessories.Entities.Entities.User", "User")
-                        .WithMany("Invoices")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.InvoiceDetail", b =>
-                {
-                    b.HasOne("PcAccessories.Entities.Entities.Invoice", "Invoice")
-                        .WithMany("InvoiceDetails")
-                        .HasForeignKey("InvoiceId1");
-
-                    b.HasOne("PcAccessories.Entities.Entities.Product", "Product")
-                        .WithMany("InvoiceDetails")
-                        .HasForeignKey("ProductId1");
-
-                    b.Navigation("Invoice");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Product", b =>
-                {
-                    b.HasOne("PcAccessories.Entities.Entities.Brand", "Brand")
-                        .WithMany("Products")
-                        .HasForeignKey("BrandId1");
-
-                    b.Navigation("Brand");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.ProductImage", b =>
-                {
-                    b.HasOne("PcAccessories.Entities.Entities.Product", "Product")
-                        .WithMany("ProductImages")
-                        .HasForeignKey("ProductId1");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.ProductLove", b =>
-                {
-                    b.HasOne("PcAccessories.Entities.Entities.Product", "Product")
-                        .WithMany("ProductLoves")
-                        .HasForeignKey("ProductId1");
-
-                    b.HasOne("PcAccessories.Entities.Entities.User", "User")
-                        .WithMany("ProductLoves")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Brand", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Category", b =>
-                {
-                    b.Navigation("Brands");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Invoice", b =>
-                {
-                    b.Navigation("InvoiceDetails");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.Product", b =>
-                {
-                    b.Navigation("InvoiceDetails");
-
-                    b.Navigation("ProductImages");
-
-                    b.Navigation("ProductLoves");
-                });
-
-            modelBuilder.Entity("PcAccessories.Entities.Entities.User", b =>
-                {
-                    b.Navigation("Invoices");
-
-                    b.Navigation("ProductLoves");
                 });
 #pragma warning restore 612, 618
         }

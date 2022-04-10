@@ -14,7 +14,5 @@ namespace PcAccessories.Entities.Entities
         public byte Status { get; set; }
         public DateTime CreatetionTime { get; set; }
         public DateTime LastLogInTime { get; set; }
-        public List<ProductLove> ProductLoves { get; set; }
-        public List<Invoice> Invoices { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,5 @@ namespace PcAccessories.Entities.Entities
         public string DeliveryAddress { get; set; }
         public string DeliveryPhone { get; set; }
         public byte Status { get; set; }
-        public User User { get; set; }
-        public List<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }
