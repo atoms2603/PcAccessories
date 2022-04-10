@@ -28,9 +28,23 @@ namespace PcAccessories.WebAPI
 
         public IConfiguration Configuration { get; }
 
+        readonly string _allowOrigin = "allowOrigin";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(
+                options => options.AddPolicy(
+                    _allowOrigin,
+                    builder => builder
+                        .WithOrigins(
+                            "https://pcaccessorieswebapi.azurewebsites.net"
+                        )
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                )
+            );
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -63,6 +77,8 @@ namespace PcAccessories.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PcAccessories.Web.Host v1"));
             }
+
+            app.UseCors(_allowOrigin);
 
             app.UseHttpsRedirection();
 

@@ -53,7 +53,7 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody]LoginRequestDto request)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null) return BadRequest("Account does not exists.");
@@ -96,7 +96,7 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
                 return BadRequest("Your request is invalid.");
             }
 
-            if (await _userManager.FindByNameAsync(request.Username) != null) 
+            if (await _userManager.FindByNameAsync(request.Username) != null)
                 return BadRequest("Username has already been taken.");
 
             if (await _userManager.FindByEmailAsync(request.Email) != null)
