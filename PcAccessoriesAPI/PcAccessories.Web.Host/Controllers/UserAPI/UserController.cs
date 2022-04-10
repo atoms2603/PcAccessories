@@ -53,7 +53,7 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromForm]LoginRequestDto request)
+        public async Task<IActionResult> Login([FromBody]LoginRequestDto request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null) return BadRequest("Account does not exists.");
@@ -88,7 +88,7 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromForm] RegisterRequestDto request)
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
             if (request == null || request.Username.IsNullOrEmpty() || request.ConfirmPassword.IsNullOrEmpty() || request.Email.IsNullOrEmpty() || request.DisplayName.IsNullOrEmpty() ||
                 request.Password.IsNullOrEmpty())
@@ -128,6 +128,17 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
             }
 
             return Ok("Sign Up Success");
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{username}")]
+        public async Task<IActionResult> GetUser(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null) return BadRequest("Account does not exists.");
+
+
+            return Ok(user);
         }
 
         #endregion
