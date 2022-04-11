@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
@@ -8,14 +9,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PcAccessories.EFCore.Data;
 using PcAccessories.Entities.Entities;
 using PcAccessories.Services.CMS.UserService;
-using PcAccessories.WebAPI.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PcAccessories.WebAPI
@@ -77,7 +79,11 @@ namespace PcAccessories.WebAPI
                       }
                     });
             });
-            AuthConfig.Configure(services, Configuration);
+
+            ConfigureAuthentication(services);
+
+            services.AddHttpContextAccessor();
+
             var connectionString = Configuration.GetConnectionString("PcAccessoriesConnection");
             var severVersion = ServerVersion.AutoDetect(connectionString);
 
@@ -87,11 +93,11 @@ namespace PcAccessories.WebAPI
                 .AddEntityFrameworkStores<PcAccessoriesDbContext>()
                 .AddDefaultTokenProviders();
 
+            // Identity Configuration
             IdentityConfig(services);
 
-            #region DI
+            // Dependency Injection
             ServiceRegistration(services);
-            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -157,6 +163,27 @@ namespace PcAccessories.WebAPI
                 options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
 
             });
+        }
+
+        private void ConfigureAuthentication(IServiceCollection services)
+        {
+            string secretKey = Configuration["Authentication:JwtBearer:SecurityKey"];
+            var key = Encoding.UTF8.GetBytes(secretKey);
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidIssuer = Configuration["Authentication:JwtBearer:Issuer"],
+                        ValidAudience = Configuration["Authentication:JwtBearer:Audience"]
+                    };
+                });
         }
     }
 }

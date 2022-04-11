@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace PcAccessories.WebAPI.Controllers.UserAPI
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : APIControllerBase
@@ -130,7 +131,6 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
             return Ok("Sign Up Success");
         }
 
-        [AllowAnonymous]
         [HttpGet("{username}")]
         public async Task<IActionResult> GetUser(string username)
         {
