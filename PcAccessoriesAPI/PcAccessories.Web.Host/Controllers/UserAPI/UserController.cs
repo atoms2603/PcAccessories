@@ -57,12 +57,12 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
-            if (user == null) return BadRequest("Account does not exists.");
+            if (user == null) return BadRequest(ErrorMessages.User_NotFound);
 
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return BadRequest("Login failed.");
+                return BadRequest(ErrorMessages.User_WrongPassword);
             }
 
             var roles = await _userManager.GetRolesAsync(user);
@@ -94,17 +94,22 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
             if (request == null || request.Username.IsNullOrEmpty() || request.ConfirmPassword.IsNullOrEmpty() || request.Email.IsNullOrEmpty() || request.DisplayName.IsNullOrEmpty() ||
                 request.Password.IsNullOrEmpty())
             {
-                return BadRequest("Your request is invalid.");
+                return BadRequest(ErrorMessages.InvalidRequest);
             }
 
             if (await _userManager.FindByNameAsync(request.Username) != null)
-                return BadRequest("Username has already been taken.");
+                return BadRequest(ErrorMessages.User_UsernameHasTaken);
 
             if (await _userManager.FindByEmailAsync(request.Email) != null)
-                return BadRequest("Email has already been taken.");
+                return BadRequest(ErrorMessages.User_EmailHasTaken);
 
             if (await _userService.FindByPhoneNumber(request.PhoneNumber) != null)
-                return BadRequest("Email has already been taken.");
+                return BadRequest(ErrorMessages.User_PhoneNumberHasBeenUsed);
+
+            if (!request.Password.Equals(request.ConfirmPassword))
+            {
+                return BadRequest(ErrorMessages.User_ConfirmPasswordNotMatch);
+            }
 
             var user = new User()
             {
@@ -117,18 +122,14 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
                 Id = Guid.NewGuid(),
                 CreatetionTime = DateTime.UtcNow
             };
-
-            if (!request.Password.Equals(request.ConfirmPassword))
-            {
-                return BadRequest("Password & ConfirmPassword do not match.");
-            }
+            
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
-                return BadRequest("Registration failed.");
+                return BadRequest(ErrorMessages.User_SignUpFailed);
             }
 
-            return Ok("Sign Up Success");
+            return Ok(ErrorMessages.User_SignUpSuccess);
         }
 
         [HttpGet("{username}")]
