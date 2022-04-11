@@ -36,7 +36,7 @@ namespace PcAccessories.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AddCors(options =>
             {
                 options.AddPolicy(_allowOrigin,
@@ -106,7 +106,7 @@ namespace PcAccessories.WebAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+
             }
 
             app.UseCors(_allowOrigin);
@@ -119,7 +119,14 @@ namespace PcAccessories.WebAPI
             app.UseAuthorization();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PcAccessories.Web.Host v1"));
+            app.UseSwaggerUI(c =>
+            {
+                if (env.IsDevelopment() || env.IsProduction())
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PcAccessories.Web.Host v1");
+                    c.RoutePrefix = string.Empty;
+                }
+            });
 
             app.UseEndpoints(endpoints =>
             {
