@@ -56,6 +56,12 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
+            if (request == null || request.Username.IsNullOrEmpty() || 
+                request.Password.IsNullOrEmpty())
+            {
+                return BadRequest(ErrorMessages.InvalidRequest);
+            }
+
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null) return BadRequest(ErrorMessages.User_NotFound);
 
