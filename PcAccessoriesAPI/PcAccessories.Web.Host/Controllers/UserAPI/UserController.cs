@@ -75,13 +75,13 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
                 new Claim("UserId", user.Id.ToString())
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtTokens:SecurityKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Authentication:JwtBearer:SecurityKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(_config["JwtTokens:Issuer"],
-                _config["JwtTokens:Audience"],
+            var token = new JwtSecurityToken(_config["Authentication:JwtBearer:Issuer"],
+                _config["Authentication:JwtBearer:Audience"],
                 claims,
-                expires: DateTime.Now.AddHours(3),
+                expires: DateTime.UtcNow.AddMinutes(int.Parse(_config["Authentication:JwtBearer:Expiration"])),
                 signingCredentials: creds);
 
             return Ok(new JwtSecurityTokenHandler().WriteToken(token));
