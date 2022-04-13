@@ -59,7 +59,7 @@ namespace PcAccessories.WebAPI
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
+                    Scheme = JwtBearerDefaults.AuthenticationScheme
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement()
                   {
@@ -69,18 +69,15 @@ namespace PcAccessories.WebAPI
                         Reference = new OpenApiReference
                           {
                             Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
+                            Id = JwtBearerDefaults.AuthenticationScheme
                           },
-                          Scheme = "oauth2",
-                          Name = "Bearer",
-                          In = ParameterLocation.Header,
                         },
                         new List<string>()
                       }
                     });
             });
 
-            ConfigureAuthentication(services);
+
 
             services.AddHttpContextAccessor();
 
@@ -98,6 +95,8 @@ namespace PcAccessories.WebAPI
 
             // Dependency Injection
             ServiceRegistration(services);
+
+            ConfigureAuthentication(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,7 +123,6 @@ namespace PcAccessories.WebAPI
                 if (env.IsDevelopment() || env.IsProduction())
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "PcAccessories.Web.Host v1");
-                    c.RoutePrefix = string.Empty;
                 }
             });
 
@@ -176,7 +174,12 @@ namespace PcAccessories.WebAPI
         {
             string secretKey = Configuration["Authentication:JwtBearer:SecurityKey"];
             var key = Encoding.UTF8.GetBytes(secretKey);
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, x =>
                 {
                     x.RequireHttpsMetadata = false;
