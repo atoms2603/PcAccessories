@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using PcAccessories.Dtos.UsersDto;
+using PcAccessories.Dtos.Request.UsersDto;
+using PcAccessories.Dtos.Response.UsersDto;
 using PcAccessories.Entities.Entities;
 using PcAccessories.Services.CMS.UserService;
 using PcAccessories.Ultilities;
@@ -65,7 +66,7 @@ namespace PcAccessories.WebAPI.Controllers.UserAPI
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null) return BadRequest(ErrorMessages.User_NotFound);
 
-            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, true, true);
             if (!result.Succeeded)
             {
                 return BadRequest(ErrorMessages.User_WrongPassword);

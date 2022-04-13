@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PcAccessories.WebAPI.Controllers
 {
-    public class APIControllerBase : ControllerBase
+    public abstract class APIControllerBase : ControllerBase
     {
         private string _userName = null;
         private string _email = null;

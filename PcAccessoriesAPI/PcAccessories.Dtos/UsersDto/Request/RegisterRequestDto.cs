@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcAccessories.Dtos.UsersDto
+namespace PcAccessories.Dtos.Response.UsersDto
 {
     public class RegisterRequestDto
     {

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcAccessories.Dtos.UsersDto
+namespace PcAccessories.Dtos.Request.UsersDto
 {
     public class LoginRequestDto
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public bool RememberMe { get; set; }
     }
 }
