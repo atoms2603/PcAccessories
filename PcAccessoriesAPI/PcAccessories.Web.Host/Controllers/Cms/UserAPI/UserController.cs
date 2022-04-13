@@ -17,10 +17,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcAccessories.WebAPI.Controllers.UserAPI
+namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("cms/api/[controller]")]
     [ApiController]
     public class UserController : APIControllerBase
     {
