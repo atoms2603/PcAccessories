@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PcAccessories.EFCore.Data;
 using PcAccessories.Entities.Entities;
+using PcAccessories.Services.CMS.ProductService;
 using PcAccessories.Services.CMS.UserService;
 using System;
 using System.Collections.Generic;
@@ -136,6 +137,7 @@ namespace PcAccessories.WebAPI
         {
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
             services.AddTransient<RoleManager<Role>, RoleManager<Role>>();
