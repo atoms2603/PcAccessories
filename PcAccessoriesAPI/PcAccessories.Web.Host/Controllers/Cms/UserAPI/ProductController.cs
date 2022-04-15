@@ -9,6 +9,7 @@ using PcAccessories.Services.CMS.ProductService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
@@ -51,7 +52,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
                                };
 
             if (!string.IsNullOrEmpty(request.Keyword))
-                productQuery = productQuery.Where(x => x.Name.Contains(request.Keyword, StringComparison.OrdinalIgnoreCase));
+                productQuery = productQuery.Where(x => x.Name.Contains(request.Keyword));
 
             // Count rows
             int totalRowsFound = await productQuery.CountAsync();

@@ -20,7 +20,7 @@ namespace PcAccessories.Services.CMS.ProductService
 
         public IQueryable<Product> GetListProductQuery()
         {
-            return  _context.Products.ToList().AsQueryable();
+            return  _context.Products;
         }
     }
 }
