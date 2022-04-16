@@ -15,5 +15,10 @@ namespace PcAccessories.Ultilities
             InActive,
             Active
         }
+
+        public enum ProductStatus : byte
+        {
+            New
+        }
     }
 }
