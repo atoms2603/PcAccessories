@@ -5,20 +5,12 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PcAccessories.Services.CMS.UserService
+namespace PcAccessories.Services.UserService
 {
-    public class UserService : IUserService
+    public class UserService : BaseService<User>, IUserService
     {
-        private readonly PcAccessoriesDbContext _context;
-        
-        public UserService(PcAccessoriesDbContext context)
+        public UserService(PcAccessoriesDbContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public IQueryable<User> GetUserQuery()
-        {
-            return _context.Users;
         }
 
         public async Task<User> GetByIdAsync(Guid id)

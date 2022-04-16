@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PcAccessories.Dtos.Pagination;
 using PcAccessories.Dtos.ProductDto.Request;
 using PcAccessories.Dtos.ProductDto.Response;
-using PcAccessories.Entities.Entities;
-using PcAccessories.Services.CMS.ProductService;
+using PcAccessories.Services.ProductService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
@@ -39,7 +36,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
         [HttpGet]
         public async Task<IActionResult> GetListProduct([FromQuery] GetListProductRequestDto request)
         {
-            var productQuery = from product in  _productService.GetListProductQuery()
+            var productQuery = from product in  _productService.GetAllQuery()
                                select new GetListProductResponseDto
                                {
                                    ProductId = product.ProductId,

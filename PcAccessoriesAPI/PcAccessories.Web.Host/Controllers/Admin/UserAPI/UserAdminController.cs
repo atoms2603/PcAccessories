@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PcAccessories.Dtos.Pagination;
 using PcAccessories.Dtos.UsersDto.Request;
 using PcAccessories.Dtos.UsersDto.Response;
-using PcAccessories.Services.CMS.UserService;
-using System;
+using PcAccessories.Services.UserService;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,7 +35,7 @@ namespace PcAccessories.WebAPI.Controllers.Admin.UserAPI
         [HttpGet]
         public async Task<IActionResult> GetListUser([FromQuery] GetListUserRequestDto request)
         {
-            var userQuery = from user in _userService.GetUserQuery()
+            var userQuery = from user in _userService.GetAllQuery()
                                select new GetListUserResponseDto
                                {
                                    UserId = user.Id,

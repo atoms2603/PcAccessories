@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcAccessories.Services.CMS.ProductService
+namespace PcAccessories.Services.ProductService
 {
-    public interface IProductService
+    public interface IProductService : IBaseService<Product>
     {
-        IQueryable<Product> GetListProductQuery();
+        Task<Product> GetProductById(Guid productId);
     }
 }
