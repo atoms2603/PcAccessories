@@ -16,6 +16,10 @@ namespace PcAccessories.Services.CMS.UserService
             _context = context;
         }
 
+        public IQueryable<User> GetUserQuery()
+        {
+            return _context.Users;
+        }
 
         public async Task<User> GetByIdAsync(Guid id)
         {
@@ -32,7 +36,7 @@ namespace PcAccessories.Services.CMS.UserService
             return await _context.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
         }
 
-        public async Task<User> FindByPhoneNumber(string phoneNumber)
+        public async Task<User> GetByPhoneNumber(string phoneNumber)
         {
             return await _context.Users.Where(x => x.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
         }

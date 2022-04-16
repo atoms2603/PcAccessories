@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
 {
     [Authorize]
-    [Route("cms/api/[controller]")]
+    [Route("cms/api/user")]
     [ApiController]
     public class UserController : APIControllerBase
     {
@@ -110,7 +110,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
             if (await _userManager.FindByEmailAsync(request.Email) != null)
                 return BadRequest(ErrorMessages.User_EmailHasTaken);
 
-            if (await _userService.FindByPhoneNumber(request.PhoneNumber) != null)
+            if (await _userService.GetByPhoneNumber(request.PhoneNumber) != null)
                 return BadRequest(ErrorMessages.User_PhoneNumberHasBeenUsed);
 
             if (!request.Password.Equals(request.ConfirmPassword))

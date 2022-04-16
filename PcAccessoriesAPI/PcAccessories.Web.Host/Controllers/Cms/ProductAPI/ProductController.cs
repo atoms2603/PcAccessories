@@ -12,9 +12,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
+namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
 {
-    [Route("cms/api/[controller]")]
+    [Route("cms/api/product")]
     [ApiController]
     public class ProductController : APIControllerBase
     {
