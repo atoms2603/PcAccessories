@@ -68,6 +68,16 @@ namespace PcAccessories.WebAPI.Controllers.Admin.ProductAPI
             return Ok(new PagingResult<GetListProductResponseDto>(pageResult, totalRowsFound, request.PageIndex, request.PageSize));
         }
 
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> GetProduct(Guid productId)
+        {
+            var productEntity = await _productService.GetProductById(productId);
+            if (productEntity == null)
+                return BadRequest(ErrorMessages.Product_NotFound);
+
+            return Ok(productEntity);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductRequestDto request)
         {
@@ -86,6 +96,65 @@ namespace PcAccessories.WebAPI.Controllers.Admin.ProductAPI
             await _productService.InsertAsync(newProduct);
 
             return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(Guid productId)
+        {
+            var productEntity = await _productService.GetProductById(productId);
+            if (productEntity == null)
+                return BadRequest(ErrorMessages.Product_NotFound);
+
+            await _productService.DeleteAsync(productEntity);
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(UpdateProductRequestDto request)
+        {
+            var productEntity = await _productService.GetProductById(request.ProductId);
+            if (productEntity == null)
+                return BadRequest(ErrorMessages.Product_NotFound);
+
+            var isModified = false;
+
+            if (request.BrandId != productEntity.BrandId)
+            {
+                productEntity.BrandId = request.BrandId;
+                isModified = true;
+            }
+
+            if (request.Name != productEntity.Name)
+            {
+                productEntity.Name = request.Name;
+                isModified = true;
+            }
+
+            if (request.Price != productEntity.Price)
+            {
+                productEntity.Price = request.Price;
+                isModified = true;
+            }
+
+            if (request.Quantity != productEntity.Quantity)
+            {
+                productEntity.Quantity = request.Quantity;
+                isModified = true;
+            }
+
+            if (request.Status != productEntity.Status)
+            {
+                productEntity.Status = request.Status;
+                isModified = true;
+            }
+
+            if (isModified)
+            {
+                await _productService.UpdateAsync(productEntity);
+            }
+
+            return Ok(productEntity);
         }
 
         #endregion

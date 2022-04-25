@@ -15,5 +15,8 @@
         public const string User_PhoneNumberHasBeenUsed = "Phone Number has been used.";
         public const string User_SignUpFailed = "SignUp failed.";
         public const string User_SignUpSuccess = "Sign Up Success.";
+
+        // Product
+        public const string Product_NotFound = "Product does not exist.";
     }
 }

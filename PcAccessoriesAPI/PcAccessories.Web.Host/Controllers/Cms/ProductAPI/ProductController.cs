@@ -4,6 +4,7 @@ using PcAccessories.Dtos.Pagination;
 using PcAccessories.Dtos.ProductDto.Request;
 using PcAccessories.Dtos.ProductDto.Response;
 using PcAccessories.Services.ProductService;
+using PcAccessories.Ultilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +63,16 @@ namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
             var pageResult = await productQuery.Skip(request.Offset).Take(request.PageSize).ToListAsync();
 
             return Ok(new PagingResult<GetListProductResponseDto>(pageResult, totalRowsFound, request.PageIndex, request.PageSize));
+        }
+
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> GetProduct(Guid productId)
+        {
+            var productEntity = await _productService.GetProductById(productId);
+            if (productEntity == null)
+                return BadRequest(ErrorMessages.Product_NotFound);
+
+            return Ok(productEntity);
         }
 
         #endregion
