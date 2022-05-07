@@ -9,8 +9,8 @@ using PcAccessories.EFCore.Data;
 namespace PcAccessories.EFCore.Migrations
 {
     [DbContext(typeof(PcAccessoriesDbContext))]
-    [Migration("20220507072215_Add data")]
-    partial class Adddata
+    [Migration("20220507083234_Init Database")]
+    partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -241,7 +241,7 @@ namespace PcAccessories.EFCore.Migrations
                         {
                             Id = 8,
                             BrandId = new Guid("89bd714f-9576-45ba-b5b7-f00649be00d8"),
-                            CategoryId = new Guid("79bd714f-9576-45ba-b5b7-f00649be00d5"),
+                            CategoryId = new Guid("79bd714f-9576-45ba-b5b7-f00649be00d4"),
                             CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Razor",
@@ -263,7 +263,7 @@ namespace PcAccessories.EFCore.Migrations
                         {
                             Id = 10,
                             BrandId = new Guid("89bd714f-9576-45ba-b5b7-f00649be00d0"),
-                            CategoryId = new Guid("79bd714f-9576-45ba-b5b7-f00649be00d6"),
+                            CategoryId = new Guid("79bd714f-9576-45ba-b5b7-f00649be00d5"),
                             CreatetionBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "AzAudio",
@@ -790,7 +790,7 @@ namespace PcAccessories.EFCore.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "3e577c18-2d09-49ad-ada0-ba26c8dc6d35",
+                            ConcurrencyStamp = "129e87d0-a63a-46ec-a43a-41927e48065b",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -965,7 +965,7 @@ namespace PcAccessories.EFCore.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "HCM",
-                            ConcurrencyStamp = "641be5e7-629f-40ab-b40e-721cfa74b6a2",
+                            ConcurrencyStamp = "47e858a6-5887-4d0d-b706-f04f834266d3",
                             CreatetionTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "huyt4242@gmail.com",
                             EmailConfirmed = true,
@@ -974,7 +974,7 @@ namespace PcAccessories.EFCore.Migrations
                             Name = "Atoms",
                             NormalizedEmail = "huyt4242@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJSgm0R2w5ycMWEhGJrYq9YTPrPuOn3TeKn9sNEJ8Y9e0vWL7ocFSC4mJHRIWssRQQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKc8a+HsoZhDNSKeu48P/HwKMAKCtneCvCl8Nbq25JQgW7CjEn2Ojms58i+H9DXfUw==",
                             PhoneNumber = "0342553542",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",

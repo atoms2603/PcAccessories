@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PcAccessories.EFCore.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -333,20 +333,68 @@ namespace PcAccessories.EFCore.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.InsertData(
+                table: "Brands",
+                columns: new[] { "Id", "BrandId", "CategoryId", "CreatetionBy", "CreatetionTime", "Name", "UpdateBy", "UpdateTime" },
+                values: new object[,]
+                {
+                    { 10, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d0"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d5"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "AzAudio", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 9, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d9"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d5"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sony", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 7, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d7"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d4"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sakura", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 6, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d6"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d3"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sony", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d5"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d3"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Logitech", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 8, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d8"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d4"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Razor", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d3"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d2"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Logitech", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d2"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d1"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Razor", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 1, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d1"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d1"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Logitech", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d4"), new Guid("79bd714f-9576-45ba-b5b7-f00649be00d2"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Razor", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CategoryId", "CreatetionBy", "CreatetionTime", "Name", "UpdateBy", "UpdateTime" },
+                values: new object[,]
+                {
+                    { 5, new Guid("79bd714f-9576-45ba-b5b7-f00649be00d5"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Micro", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 1, new Guid("79bd714f-9576-45ba-b5b7-f00649be00d1"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Keyboard", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new Guid("79bd714f-9576-45ba-b5b7-f00649be00d2"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mouse", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, new Guid("79bd714f-9576-45ba-b5b7-f00649be00d3"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Earphone", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, new Guid("79bd714f-9576-45ba-b5b7-f00649be00d4"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Keycap", new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "BrandId", "CreatetionBy", "CreatetionTime", "Name", "Price", "ProductId", "Quantity", "Status", "UpdateBy", "UpdateTime" },
+                values: new object[,]
+                {
+                    { 9, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d5"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Earphone-1", 350.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d9"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 10, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d5"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Earphone-2", 200.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be0d10"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d1"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Keyboard-2", 1000.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d2"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 12, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d6"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Earphone-4", 400.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be0d12"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 8, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d4"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mouse-4", 200.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d8"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 11, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d6"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Earphone-3", 550.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be0d11"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 7, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d4"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mouse-3", 150.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d7"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 1, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d1"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Keyboard-1", 100.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d1"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d3"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mouse-1", 150.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d5"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d2"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Keyboard-4", 2000.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d4"), 15, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d2"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Keyboard-3", 1500.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d3"), 20, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 6, new Guid("89bd714f-9576-45ba-b5b7-f00649be00d3"), new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mouse-2", 200.0, new Guid("99bd714f-9576-45ba-b5b7-f00649be00d6"), 10, (byte)0, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "cc2d51c1-ceb8-462e-833d-dd58bb9cb710", "Administrator role", "admin", "admin" });
+                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "129e87d0-a63a-46ec-a43a-41927e48065b", "Administrator role", "admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "Sliders",
                 columns: new[] { "Id", "CreatetionBy", "CreatetionTime", "Image", "SlideId", "Status", "UpdateBy", "UpdateTime" },
                 values: new object[,]
                 {
+                    { 5, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d5"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d3"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { 1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d1"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { 2, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d2"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d3"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "4.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d4"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d5"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 4, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "4.png", new Guid("69bd714f-9576-45ba-b5b7-f00649be00d4"), (byte)1, new Guid("00000000-0000-0000-0000-000000000000"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -357,7 +405,7 @@ namespace PcAccessories.EFCore.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreatetionTime", "Email", "EmailConfirmed", "LastLogInTime", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "HCM", "64fce2df-92ba-45b5-9a29-ac23a31af7ea", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "huyt4242@gmail.com", true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "Atoms", "huyt4242@gmail.com", "admin", "AQAAAAEAACcQAAAAEKv/FOvWuJ87FO3ONw6JiNXMGRbqApUQgmepSSsbm3SfSUxYPFf92YcuWS8/CofVZA==", "0342553542", false, "", (byte)0, false, "admin" });
+                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "HCM", "47e858a6-5887-4d0d-b706-f04f834266d3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "huyt4242@gmail.com", true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "Atoms", "huyt4242@gmail.com", "admin", "AQAAAAEAACcQAAAAEKc8a+HsoZhDNSKeu48P/HwKMAKCtneCvCl8Nbq25JQgW7CjEn2Ojms58i+H9DXfUw==", "0342553542", false, "", (byte)0, false, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Brands_BrandId",

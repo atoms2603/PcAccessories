@@ -238,9 +238,9 @@ namespace PcAccessories.EFCore.Data
                 new Brand() { Id = 5, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D5"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D3"), Name = "Logitech" },
                 new Brand() { Id = 6, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D6"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D3"), Name = "Sony" },
                 new Brand() { Id = 7, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D7"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D4"), Name = "Sakura" },
-                new Brand() { Id = 8, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D8"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D5"), Name = "Razor" },
+                new Brand() { Id = 8, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D8"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D4"), Name = "Razor" },
                 new Brand() { Id = 9, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D9"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D5"), Name = "Sony" },
-                new Brand() { Id = 10, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D0"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D6"), Name = "AzAudio" }
+                new Brand() { Id = 10, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D0"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D5"), Name = "AzAudio" }
             );
             modelBuilder.Entity<Product>().HasData(
                 new Product
