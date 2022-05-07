@@ -222,7 +222,140 @@ namespace PcAccessories.EFCore.Data
               new Slide() { Id = 3, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D3"), Image = "3.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
               new Slide() { Id = 4, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D4"), Image = "4.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active },
               new Slide() { Id = 5, SlideId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00D5"), Image = "5.png", Status = (byte)PcAccessoriesEnum.SlideStatus.Active }
-              );
+            );
+            modelBuilder.Entity<Category>().HasData(
+                new Category() { Id = 1, CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D1"), Name = "Keyboard" },
+                new Category() { Id = 2, CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D2"), Name = "Mouse" },
+                new Category() { Id = 3, CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D3"), Name = "Earphone" },
+                new Category() { Id = 4, CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D4"), Name = "Keycap" },
+                new Category() { Id = 5, CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D5"), Name = "Micro" }
+            );
+            modelBuilder.Entity<Brand>().HasData(
+                new Brand() { Id = 1, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D1"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D1"), Name = "Logitech" },
+                new Brand() { Id = 2, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D2"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D1"), Name = "Razor" },
+                new Brand() { Id = 3, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D3"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D2"), Name = "Logitech" },
+                new Brand() { Id = 4, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D4"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D2"), Name = "Razor" },
+                new Brand() { Id = 5, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D5"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D3"), Name = "Logitech" },
+                new Brand() { Id = 6, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D6"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D3"), Name = "Sony" },
+                new Brand() { Id = 7, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D7"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D4"), Name = "Sakura" },
+                new Brand() { Id = 8, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D8"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D5"), Name = "Razor" },
+                new Brand() { Id = 9, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D9"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D5"), Name = "Sony" },
+                new Brand() { Id = 10, BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D0"), CategoryId = new Guid("79BD714F-9576-45BA-B5B7-F00649BE00D6"), Name = "AzAudio" }
+            );
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 1,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D1"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D1"),
+                    Name = "Keyboard-1",
+                    Price = 100,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                },
+                new Product
+                {
+                    Id = 2,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D1"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D2"),
+                    Name = "Keyboard-2",
+                    Price = 1000,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                },
+                new Product
+                {
+                    Id = 3,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D2"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D3"),
+                    Name = "Keyboard-3",
+                    Price = 1500,
+                    Quantity = 20,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 4,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D2"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D4"),
+                    Name = "Keyboard-4",
+                    Price = 2000,
+                    Quantity = 15,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 5,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D3"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D5"),
+                    Name = "Mouse-1",
+                    Price = 150,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 6,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D3"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D6"),
+                    Name = "Mouse-2",
+                    Price = 200,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 7,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D4"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D7"),
+                    Name = "Mouse-3",
+                    Price = 150,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 8,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D4"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D8"),
+                    Name = "Mouse-4",
+                    Price = 200,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                },
+                new Product
+                {
+                    Id = 9,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D5"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE00D9"),
+                    Name = "Earphone-1",
+                    Price = 350,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 10,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D5"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE0D10"),
+                    Name = "Earphone-2",
+                    Price = 200,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 11,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D6"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE0D11"),
+                    Name = "Earphone-3",
+                    Price = 550,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }, new Product
+                {
+                    Id = 12,
+                    BrandId = new Guid("89BD714F-9576-45BA-B5B7-F00649BE00D6"),
+                    ProductId = new Guid("99BD714F-9576-45BA-B5B7-F00649BE0D12"),
+                    Name = "Earphone-4",
+                    Price = 400,
+                    Quantity = 10,
+                    Status = (byte)PcAccessoriesEnum.ProductStatus.New
+                }
+            );
         }
     }
 }

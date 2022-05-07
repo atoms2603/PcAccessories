@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PcAccessories.EFCore.Data;
 
 namespace PcAccessories.EFCore.Migrations
 {
     [DbContext(typeof(PcAccessoriesDbContext))]
-    partial class PcAccessoriesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220507072215_Add data")]
+    partial class Adddata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

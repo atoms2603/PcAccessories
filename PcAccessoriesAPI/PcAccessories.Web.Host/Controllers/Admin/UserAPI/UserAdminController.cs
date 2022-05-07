@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PcAccessories.Dtos.Pagination;
 using PcAccessories.Dtos.UsersDto.Request;
@@ -12,6 +13,7 @@ namespace PcAccessories.WebAPI.Controllers.Admin.UserAPI
 {
     [Route("admin/api/user")]
     [ApiController]
+    [Authorize]
     public class UserAdminController : ControllerBase
     {
 
