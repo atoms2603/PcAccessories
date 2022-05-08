@@ -46,10 +46,11 @@ namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
         public async Task<IActionResult> GetListProduct([FromQuery] GetListProductRequestDto request)
         {
             var productQuery = from product in  _productService.GetAllQuery()
+                               join brand in _brandService.GetAllQuery() on product.BrandId equals brand.BrandId
                                select new GetListProductResponseDto
                                {
                                    ProductId = product.ProductId,
-                                   BrandId = Guid.Empty,
+                                   BrandId = brand.BrandId,
                                    Name = product.Name,
                                    Price = product.Price,
                                    Quantity = product.Quantity,

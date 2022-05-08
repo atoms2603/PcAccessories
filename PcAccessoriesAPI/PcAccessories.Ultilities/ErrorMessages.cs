@@ -18,5 +18,8 @@
 
         // Product
         public const string Product_NotFound = "Product does not exist.";
+
+        // Category
+        public const string Category_NotFound = "Category does not exist.";
     }
 }

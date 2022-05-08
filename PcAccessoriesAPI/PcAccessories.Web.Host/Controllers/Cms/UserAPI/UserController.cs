@@ -138,12 +138,10 @@ namespace PcAccessories.WebAPI.Controllers.Cms.UserAPI
         }
 
         [HttpGet("{username}")]
-        public async Task<IActionResult> GetUser(string username)
+        public async Task<IActionResult> GetUserById(Guid userId)
         {
-            var user = await _userManager.FindByNameAsync(username);
+            var user = await _userService.GetByIdAsync(userId);
             if (user == null) return BadRequest("Account does not exists.");
-
-
             return Ok(user);
         }
 
