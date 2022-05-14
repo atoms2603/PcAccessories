@@ -1,4 +1,5 @@
-﻿using PcAccessories.EFCore.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using PcAccessories.EFCore.Data;
 using PcAccessories.Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,11 @@ namespace PcAccessories.Services.CategoryService
         public CategoryService (PcAccessoriesDbContext context) : base(context)
         {
 
+        }
+
+        public async Task<Category> GetCategoryById(Guid id)
+        {
+            return await _context.Categories.Where(x => x.CategoryId == id).FirstOrDefaultAsync();
         }
     }
 }

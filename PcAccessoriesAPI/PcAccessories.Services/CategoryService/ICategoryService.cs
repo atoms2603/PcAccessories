@@ -9,5 +9,6 @@ namespace PcAccessories.Services.CategoryService
 {
     public interface ICategoryService : IBaseService<Category>
     {
+        Task<Category> GetCategoryById(Guid id);
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcAccessories.Dtos.CategoryDto
+namespace PcAccessories.Dtos.CategoryDto.Response
 {
     public class GetListCategoryResponseDto
     {
