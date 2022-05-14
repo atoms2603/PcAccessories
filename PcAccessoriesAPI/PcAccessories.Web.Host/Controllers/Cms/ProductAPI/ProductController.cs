@@ -45,7 +45,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
         [HttpGet("list-product")]
         public async Task<IActionResult> GetListProduct([FromQuery] GetListProductRequestDto request)
         {
-            var productQuery = from product in  _productService.GetAllQuery()
+            var productQuery = from product in _productService.GetAllQuery()
                                join brand in _brandService.GetAllQuery() on product.BrandId equals brand.BrandId
                                select new GetListProductResponseDto
                                {
@@ -77,7 +77,17 @@ namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProduct(Guid productId)
         {
-            var productEntity = await _productService.GetProductById(productId);
+            var productEntity = await (from category in _categoryService.GetAllQuery()
+                                       join brand in _brandService.GetAllQuery() on category.CategoryId equals brand.CategoryId
+                                       join product in _productService.GetAllQuery() on brand.BrandId equals product.BrandId
+                                       where product.ProductId == productId
+                                       select new ProductDetailDto
+                                       {
+                                           ProductId = product.ProductId,
+                                           BrandName = brand.Name,
+                                           ProductName = product.Name,
+                                           Price = product.Price
+                                       }).FirstOrDefaultAsync();
             if (productEntity == null)
                 return BadRequest(ErrorMessages.Product_NotFound);
 
@@ -121,7 +131,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.ProductAPI
         [HttpGet("list-product-by-brand/{brandId}")]
         public async Task<IActionResult> GetListProductByBrandId([Required] Guid brandId, [FromQuery] GetListProductRequestDto request)
         {
-            var productQuery = from brand in _brandService.GetAllQuery() 
+            var productQuery = from brand in _brandService.GetAllQuery()
                                join product in _productService.GetAllQuery() on brand.BrandId equals product.BrandId
                                where brand.BrandId == brandId
                                select new GetListProductResponseDto

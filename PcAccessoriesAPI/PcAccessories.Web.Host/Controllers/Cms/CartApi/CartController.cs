@@ -45,7 +45,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
         }
         #endregion
 
-        [HttpPost("productId")]
+        [HttpPost("{productId}")]
         public async Task<IActionResult> AddProductToCart(Guid productId, int quantity)
         {
             var currentUserLoginId = this.UserId.Value;
@@ -109,7 +109,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
             return Ok(listProductInCart);
         }
 
-        [HttpDelete("productId")]
+        [HttpDelete("{productId}")]
         public async Task<IActionResult> DeleteProductInCart(Guid productId, Guid cartId)
         {
 
