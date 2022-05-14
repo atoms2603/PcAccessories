@@ -15,4 +15,8 @@
     <ProjectReference Include="..\PcAccessories.Entities\PcAccessories.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Invoice\" />
+  </ItemGroup>
+
 </Project>

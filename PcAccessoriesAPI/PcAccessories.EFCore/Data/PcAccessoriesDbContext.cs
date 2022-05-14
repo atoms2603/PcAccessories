@@ -26,6 +26,8 @@ namespace PcAccessories.EFCore.Data
         public DbSet<ProductLove> ProductLoves { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<ProductInCart> ProductInCarts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,6 +60,12 @@ namespace PcAccessories.EFCore.Data
             .Property(f => f.Id)
             .ValueGeneratedOnAdd();
             modelBuilder.Entity<InvoiceDetail>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Cart>()
+            .Property(f => f.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<ProductInCart>()
             .Property(f => f.Id)
             .ValueGeneratedOnAdd();
 
@@ -173,6 +181,46 @@ namespace PcAccessories.EFCore.Data
                     .IsFixedLength();
             });
 
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.CartId)
+                   .IsRequired()
+                   .HasMaxLength(36)
+                   .IsUnicode(false)
+                   .IsFixedLength();
+            });
+
+            modelBuilder.Entity<ProductInCart>(entity =>
+            {
+                entity.Property(e => e.CartId)
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.ProductId)
+                    .IsRequired()
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.ProductInCartId)
+                    .IsRequired()
+                    .HasMaxLength(36)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+            });
+
 
 
             modelBuilder.Entity<Slide>().HasIndex(x => x.SlideId).IsUnique();
@@ -183,6 +231,8 @@ namespace PcAccessories.EFCore.Data
             modelBuilder.Entity<ProductLove>().HasIndex(x => x.ProductLoveId).IsUnique();
             modelBuilder.Entity<Invoice>().HasIndex(x => x.InvoiceId).IsUnique();
             modelBuilder.Entity<InvoiceDetail>().HasIndex(x => x.InvoiceDetailId).IsUnique();
+            modelBuilder.Entity<Cart>().HasIndex(x => x.CartId).IsUnique();
+            modelBuilder.Entity<ProductInCart>().HasIndex(x => x.ProductInCartId).IsUnique();
 
             var roleId = new Guid("8D04DCE2-969A-435D-BBA4-DF3F325983DC");
             var adminId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00DE");
