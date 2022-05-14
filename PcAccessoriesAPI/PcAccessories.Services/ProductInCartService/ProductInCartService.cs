@@ -16,9 +16,9 @@ namespace PcAccessories.Services.ProductInCartService
 
         }
 
-        public async Task<bool> IsProductExistInCartAsync(Guid cartId, Guid productId)
+        public async Task<ProductInCart> IsProductExistInCartAsync(Guid cartId, Guid productId)
         {
-            return await _context.ProductInCarts.AnyAsync(x => x.CartId == cartId && x.ProductId == productId);
+            return await _context.ProductInCarts.FirstOrDefaultAsync(x => x.CartId == cartId && x.ProductId == productId);
         }
     }
 }
