@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PcAccessories.Services.CartService
 {
-    class CartService : BaseService<Cart>, ICartService
+    public class CartService : BaseService<Cart>, ICartService
     {
         public CartService(PcAccessoriesDbContext context) : base(context)
         {

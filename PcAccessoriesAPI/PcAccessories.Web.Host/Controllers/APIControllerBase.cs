@@ -13,7 +13,6 @@ namespace PcAccessories.WebAPI.Controllers
         private string _email = null;
         private Guid? _userId = null;
 
-        public IHttpContextAccessor HttpContextAccessor { get; set; }
         public string UserName
         {
             get
@@ -50,7 +49,7 @@ namespace PcAccessories.WebAPI.Controllers
 
         private string GetClaimValue(string type)
         {
-            return HttpContextAccessor?.HttpContext?.User?.Claims?.FirstOrDefault(c => c.Type == type)?.Value;
+            return HttpContext.User.Claims.FirstOrDefault(c => c.Type == type)?.Value;
         }
     }
 }

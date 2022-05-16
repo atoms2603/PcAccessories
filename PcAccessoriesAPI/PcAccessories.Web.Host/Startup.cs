@@ -11,7 +11,9 @@ using Microsoft.OpenApi.Models;
 using PcAccessories.EFCore.Data;
 using PcAccessories.Entities.Entities;
 using PcAccessories.Services.BrandService;
+using PcAccessories.Services.CartService;
 using PcAccessories.Services.CategoryService;
+using PcAccessories.Services.ProductInCartService;
 using PcAccessories.Services.ProductService;
 using PcAccessories.Services.UserService;
 using System;
@@ -133,8 +135,10 @@ namespace PcAccessories.WebAPI
 
         private void ServiceRegistration(IServiceCollection services)
         {
-
+            services.AddHttpContextAccessor();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IProductInCartService, ProductInCartService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IBrandService, BrandService>();

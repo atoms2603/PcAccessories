@@ -10,6 +10,7 @@ using PcAccessories.Services.ProductService;
 using PcAccessories.Ultilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
         private readonly IBrandService _brandService;
         private readonly ICartService _cartService;
         private readonly IProductInCartService _productInCartService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         #endregion
 
         #region Constructor
@@ -35,18 +37,20 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
             IProductService productService,
             IBrandService brandService,
             ICartService cartService,
-            IProductInCartService productInCartService)
+            IProductInCartService productInCartService,
+            IHttpContextAccessor httpContextAccessor)
         {
             _categoryService = categoryService;
             _productService = productService;
             _brandService = brandService;
             _cartService = cartService;
             _productInCartService = productInCartService;
+            _httpContextAccessor = httpContextAccessor;
         }
         #endregion
 
-        [HttpPost("{productId}")]
-        public async Task<IActionResult> AddProductToCart(Guid productId, int quantity)
+        [HttpPost]
+        public async Task<IActionResult> AddProductToCart([Required]Guid productId, int quantity)
         {
             var currentUserLoginId = this.UserId.Value;
             var product = await _productService.GetProductById(productId);
@@ -92,7 +96,6 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
         public async Task<IActionResult> GetCart()
         {
             var currentUserLoginId = this.UserId.Value;
-
             var cart = await _cartService.GetByUserIdAsync(currentUserLoginId);
             if (cart == null)
             {
@@ -109,11 +112,12 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
             return Ok(listProductInCart);
         }
 
-        [HttpDelete("{productId}")]
-        public async Task<IActionResult> DeleteProductInCart(Guid productId, Guid cartId)
+        [HttpDelete("productId")]
+        public async Task<IActionResult> DeleteProductInCart(Guid productId)
         {
-
-            var productInCart = await _productInCartService.IsProductExistInCartAsync(cartId, productId);
+            var currentUserLoginId = this.UserId.Value;
+            var cart = await _cartService.GetByUserIdAsync(currentUserLoginId);
+            var productInCart = await _productInCartService.IsProductExistInCartAsync(cart.CartId, productId);
             if (productInCart != null)
             {
                 await _productInCartService.DeleteAsync(productInCart);
