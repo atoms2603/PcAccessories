@@ -112,6 +112,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
                                      join product in _productService.GetAllQuery() on productInCart.ProductId equals product.ProductId
                                      select new ListProductInCartResponseDto
                                      {
+                                         ProductId = product.ProductId,
                                          ProductName = product.Name,
                                          Price = product.Price,
                                          Quantity = productInCart.Quantity
