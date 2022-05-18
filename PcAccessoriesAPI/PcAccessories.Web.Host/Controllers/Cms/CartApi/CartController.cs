@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PcAccessories.Dtos.CartDto;
 using PcAccessories.Entities.Entities;
 using PcAccessories.Services.BrandService;
 using PcAccessories.Services.CartService;
@@ -46,11 +47,11 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
         }
         #endregion
 
-        [HttpPost]
-        public async Task<IActionResult> AddProductToCart([Required]Guid productId, int quantity)
+        [HttpPost("add-to-cart")]
+        public async Task<IActionResult> AddProductToCart(AddToCartRequestDto dto)
         {
             var currentUserLoginId = this.UserId.Value;
-            var product = await _productService.GetProductById(productId);
+            var product = await _productService.GetProductById(dto.ProductId);
             if(product == null)
             {
                 return BadRequest(ErrorMessages.Product_NotFound);
@@ -70,7 +71,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
             var productInCart = await _productInCartService.IsProductExistInCartAsync(cart.CartId, product.ProductId);
             if (productInCart != null)
             {
-                productInCart.Quantity += quantity;
+                productInCart.Quantity += dto.Quantity;
                 await _productInCartService.UpdateAsync(productInCart);
             }
             else
@@ -79,7 +80,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
                 {
                     CartId = cart.CartId,
                     ProductId = product.ProductId,
-                    Quantity = quantity,
+                    Quantity = dto.Quantity,
                     Price = product.Price,
                     ProductInCartId = Guid.NewGuid(),
                     CreatetionTime = DateTime.UtcNow,
