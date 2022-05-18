@@ -135,7 +135,6 @@ namespace PcAccessories.WebAPI
 
         private void ServiceRegistration(IServiceCollection services)
         {
-            services.AddHttpContextAccessor();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IProductInCartService, ProductInCartService>();

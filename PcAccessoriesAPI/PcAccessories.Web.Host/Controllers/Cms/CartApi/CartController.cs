@@ -28,7 +28,6 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
         private readonly IBrandService _brandService;
         private readonly ICartService _cartService;
         private readonly IProductInCartService _productInCartService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         #endregion
 
         #region Constructor
@@ -37,15 +36,13 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
             IProductService productService,
             IBrandService brandService,
             ICartService cartService,
-            IProductInCartService productInCartService,
-            IHttpContextAccessor httpContextAccessor)
+            IProductInCartService productInCartService)
         {
             _categoryService = categoryService;
             _productService = productService;
             _brandService = brandService;
             _cartService = cartService;
             _productInCartService = productInCartService;
-            _httpContextAccessor = httpContextAccessor;
         }
         #endregion
 
@@ -70,23 +67,26 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
                 await _cartService.InsertAsync(cart);
             }
 
-            var productInCart = await _productInCartService.IsProductExistInCartAsync(cart.CartId, productId);
+            var productInCart = await _productInCartService.IsProductExistInCartAsync(cart.CartId, product.ProductId);
             if (productInCart != null)
             {
-                productInCart.Quantity = quantity;
+                productInCart.Quantity += quantity;
                 await _productInCartService.UpdateAsync(productInCart);
             }
-
-            await _productInCartService.InsertAsync(new ProductInCart
+            else
             {
-                CartId = cart.CartId,
-                ProductId = product.ProductId,
-                Quantity = quantity,
-                Price = product.Price,
-                ProductInCartId = Guid.NewGuid(),
-                CreatetionTime = DateTime.UtcNow,
-                CreatetionBy = currentUserLoginId
-            });
+                await _productInCartService.InsertAsync(new ProductInCart
+                {
+                    CartId = cart.CartId,
+                    ProductId = product.ProductId,
+                    Quantity = quantity,
+                    Price = product.Price,
+                    ProductInCartId = Guid.NewGuid(),
+                    CreatetionTime = DateTime.UtcNow,
+                    CreatetionBy = currentUserLoginId
+                });
+            }
+            
 
             return Ok();
         }
