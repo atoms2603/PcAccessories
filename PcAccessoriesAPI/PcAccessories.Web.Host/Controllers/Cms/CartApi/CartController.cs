@@ -52,7 +52,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
         {
             var currentUserLoginId = this.UserId.Value;
             var product = await _productService.GetProductById(dto.ProductId);
-            if(product == null)
+            if (product == null)
             {
                 return BadRequest(ErrorMessages.Product_NotFound);
             }
@@ -87,12 +87,12 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
                     CreatetionBy = currentUserLoginId
                 });
             }
-            
+
 
             return Ok();
         }
 
-        
+
         [HttpGet("get-product-in-cart")]
         public async Task<IActionResult> GetCart()
         {
@@ -108,7 +108,14 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
                 await _cartService.InsertAsync(cart);
             }
 
-            var listProductInCart = (_productInCartService.GetAllQuery().Where(x => x.CartId == cart.CartId)).ToList();
+            var listProductInCart = (from productInCart in _productInCartService.GetAllQuery()
+                                     join product in _productService.GetAllQuery() on productInCart.ProductId equals product.ProductId
+                                     select new ListProductInCartResponseDto
+                                     {
+                                         ProductName = product.Name,
+                                         Price = product.Price,
+                                         Quantity = productInCart.Quantity
+                                     }).ToList();
 
             return Ok(listProductInCart);
         }
