@@ -121,7 +121,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.CartApi
             return Ok(listProductInCart);
         }
 
-        [HttpDelete("productId")]
+        [HttpDelete("{productId}")]
         public async Task<IActionResult> DeleteProductInCart(Guid productId)
         {
             var currentUserLoginId = this.UserId.Value;
