@@ -33,7 +33,7 @@ namespace PcAccessories.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task InsertAsync(List<T> entities)
+        public async Task BulkInsertAsync(List<T> entities)
         {
             await _context.Set<T>().AddRangeAsync(entities);
             await _context.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace PcAccessories.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(List<T> entities)
+        public async Task BulkUpdateAsync(List<T> entities)
         {
             _context.Set<T>().UpdateRange(entities);
             await _context.SaveChangesAsync();
