@@ -74,7 +74,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.InvoiceAPI
             return Ok(invoiceDetail);
         }
 
-        [HttpGet("create-invoice")]
+        [HttpPost("create-invoice")]
         public async Task<IActionResult> CreateInvoice(CreateInvoiceRequestDto dto)
         {
             var currentUserLoginId = this.UserId.Value;
