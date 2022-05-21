@@ -13,6 +13,8 @@ using PcAccessories.Entities.Entities;
 using PcAccessories.Services.BrandService;
 using PcAccessories.Services.CartService;
 using PcAccessories.Services.CategoryService;
+using PcAccessories.Services.InvoiceDetailService;
+using PcAccessories.Services.InvoiceService;
 using PcAccessories.Services.ProductInCartService;
 using PcAccessories.Services.ProductService;
 using PcAccessories.Services.UserService;
@@ -136,6 +138,8 @@ namespace PcAccessories.WebAPI
         private void ServiceRegistration(IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddTransient<IInvoiceDetailService, InvoiceDetailService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IProductInCartService, ProductInCartService>();
             services.AddTransient<IProductService, ProductService>();
