@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PcAccessories.Dtos.InvoiceDto;
 using PcAccessories.Entities.Entities;
@@ -14,6 +15,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.InvoiceAPI
 {
     [Route("cms/api/invoice")]
     [ApiController]
+    [Authorize]
     public class InvoiceController : APIControllerBase
     {
         private readonly IInvoiceService _invoiceService;
