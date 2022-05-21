@@ -48,26 +48,26 @@ namespace PcAccessories.WebAPI.Controllers.Cms.InvoiceAPI
         [HttpGet("{invoiceId}")]
         public async Task<IActionResult> GetInvoiceDetail(Guid invoiceId)
         {
-            var currentUserLoginId = this.UserId.Value;
 
-            var invoiceDetail = from invoice in _invoiceService.GetAllQuery()
-                              join detail in _invoiceDetailService.GetAllQuery() on invoice.InvoiceId equals detail.InvoiceId
-                              where invoice.InvoiceId == invoiceId
-                              select new InvoiceDetailResponseDto
-                              {
-                                  DeliveryName = invoice.DeliveryName,
-                                  DeliveryAddress = invoice.DeliveryAddress,
-                                  DeliveryPhone = invoice.DeliveryPhone,
-                                  Products = (from product in _productService.GetAllQuery()
-                                              where detail.ProductId == product.ProductId
-                                              select new InvoiceDetailResponseDto.Product
-                                              {
-                                                  ProductId = product.ProductId,
-                                                  ProductName = product.Name,
-                                                  Quantity = detail.Quantity,
-                                                  Price = detail.Price
-                                              }).ToList()
-                              };
+            var invoiceDetail = (from invoice in _invoiceService.GetAllQuery()
+                                 join detail in _invoiceDetailService.GetAllQuery() on invoice.InvoiceId equals detail.InvoiceId
+                                 where invoice.InvoiceId == invoiceId
+                                 select new InvoiceDetailResponseDto
+                                 {
+                                     DeliveryName = invoice.DeliveryName,
+                                     DeliveryAddress = invoice.DeliveryAddress,
+                                     DeliveryPhone = invoice.DeliveryPhone,
+                                     Products = (from product in _productService.GetAllQuery()
+                                                 join productDetail in _invoiceDetailService.GetAllQuery() on product.ProductId equals productDetail.ProductId
+                                                 where productDetail.InvoiceId == invoice.InvoiceId
+                                                 select new InvoiceDetailResponseDto.Product
+                                                 {
+                                                     ProductId = product.ProductId,
+                                                     ProductName = product.Name,
+                                                     Quantity = detail.Quantity,
+                                                     Price = detail.Price
+                                                 }).ToList()
+                                 }).FirstOrDefault();
             if (invoiceDetail == null)
             {
                 return BadRequest();
@@ -94,7 +94,8 @@ namespace PcAccessories.WebAPI.Controllers.Cms.InvoiceAPI
             await _invoiceService.InsertAsync(invoice);
             List<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
 
-            dto.Products.ForEach(x => {
+            dto.Products.ForEach(x =>
+            {
                 var invoiceDetail = new InvoiceDetail
                 {
                     InvoiceDetailId = Guid.NewGuid(),
