@@ -84,6 +84,7 @@ namespace PcAccessories.WebAPI.Controllers.Cms.InvoiceAPI
             var invoice = new Invoice
             {
                 InvoiceId = Guid.NewGuid(),
+                UserId = currentUserLoginId,
                 CreatetionTime = DateTime.Now,
                 CreatetionBy = currentUserLoginId,
                 DeliveryName = dto.DeliveryName,
